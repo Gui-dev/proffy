@@ -25,6 +25,32 @@ export const PageContainer = styled.div`
       margin-left: 0.8rem;
     }
   }
+
+  @media (min-width: 1100px) {
+    display: grid;
+    grid-template-areas:
+      'logo hero hero'
+      'buttons buttons total'
+      ;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 35rem 1fr;
+
+    max-width: 110rem;
+
+    > img {
+      grid-area: hero;
+    }
+
+    span {
+      grid-area: total;
+      justify-self: flex-end;
+      font-size: 1rem;
+
+      img {
+        display: none;
+      }
+    }
+  }
 `
 
 export const LogoContainer = styled.div`
@@ -40,6 +66,24 @@ export const LogoContainer = styled.div`
     font-weight: 500;
     line-height: 4rem;
     margin-top: 0.8rem;
+  }
+
+  @media (min-width: 1100px) {
+    grid-area: logo;
+    align-self: center;
+    text-align: left;
+    margin: 0;
+
+    h1 {
+      font-size: 3.6rem;
+      text-align: initial;
+    }
+
+    img {
+      height: 100%;
+      align-self: center;
+      justify-self: flex-end;
+    }
   }
 `
 
@@ -84,6 +128,24 @@ export const ButtonContainer = styled.div`
 
     &:hover {
       background-color: var(--color-secundary-dark);
+    }
+  }
+
+  @media (min-width: 1100px) {
+    grid-area: buttons;
+    justify-content: flex-start;
+
+    a {
+      font-size: 2.4rem;
+      margin-left: 2,4rem;
+
+      img {
+        margin-right: 2rem;
+      }
+    }
+
+    .give-classes {
+      margin-right: 1rem;
     }
   }
 `
