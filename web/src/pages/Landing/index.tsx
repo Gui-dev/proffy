@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import logoImg from './../../assets/images/logo.svg'
 import landingImg from './../../assets/images/landing.svg'
@@ -19,14 +20,14 @@ export const Landing: React.FC = () => {
         <img src={landingImg} alt="Plataforma de estudos" title="Plataforma de estudos"/>
 
         <ButtonContainer>
-          <a href="/" title="Estudar" className="study">
+          <Link to="/study" title="Estudar" className="study">
             <img src={studyImg} alt="Estudar" title="Estudar"/>
             Estudar
-          </a>
-          <a href="/" title="Estudar" className="give-classes">
+          </Link>
+          <Link to="/give-classes" title="Estudar" className="give-classes">
             <img src={giveClassesIcon} alt="Estudar" title="Dar aulas"/>
             Dar aulas
-          </a>
+          </Link>
         </ButtonContainer>
 
         <span>
