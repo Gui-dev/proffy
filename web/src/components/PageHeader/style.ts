@@ -4,6 +4,10 @@ export const Header = styled.header`
   display: flex;
   flex-direction: column;
   background-color: var(--color-primary);
+
+  @media (min-width: 700px) {
+    height: 30.4rem;
+  }
 `
 
 export const HeaderContainer = styled.div`
@@ -27,6 +31,10 @@ export const HeaderContainer = styled.div`
   > img {
     height: 1.6rem;
   }
+
+  @media (min-width: 700px) {
+    max-width: 110rem;
+  }
 `
 
 export const HeaderContent = styled.div`
@@ -40,5 +48,20 @@ export const HeaderContent = styled.div`
     font-family: 'Archivo';
     line-height: 4.2rem;
     color: var(--color-title-in-primary);
+  }
+
+  @media (min-width: 700px) {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 74rem;
+    margin: 0 auto;
+    padding-bottom: 4.8rem;
+
+    strong {
+      max-width: 35rem;
+    }
   }
 `

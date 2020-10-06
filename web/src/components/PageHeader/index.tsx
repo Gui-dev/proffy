@@ -10,7 +10,7 @@ interface PageHeaderProps {
   title: string
 }
 
-export const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
+export const PageHeader: React.FC<PageHeaderProps> = ({ children, title }) => {
 
   return (
     <Header>
@@ -23,6 +23,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
 
       <HeaderContent>
         <strong>{ title }</strong>
+        { children }
       </HeaderContent>
 
     </Header>
