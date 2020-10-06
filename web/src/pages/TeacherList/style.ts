@@ -63,3 +63,13 @@ export const InputBlock = styled.div`
     outline: 0;
   }
 `
+
+export const Main = styled.main`
+  width: 90%;
+  margin: 3.2rem auto;
+
+  @media (min-width: 700px) {
+    max-width: 74rem;
+    padding: 3.2rem 0;
+  }
+`
