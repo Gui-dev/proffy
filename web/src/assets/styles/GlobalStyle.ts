@@ -45,6 +45,7 @@ export default createGlobalStyle`
 
   body, input, button, textarea {
     font-family: 'Poppins', 'Archivo', sans-serif;
+    color: var(--color-text-base);
   }
 
   .container {
