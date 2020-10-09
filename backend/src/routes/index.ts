@@ -1,9 +1,10 @@
 import { Router } from 'express'
 
+import classesRoutes from './classes.routes'
+
 const routes = Router()
 
-routes.get('/users', (req, res) => {
-  res.send('<h1>Hello World</h1>')
-})
+
+routes.use('/classes', classesRoutes)
 
 export default routes
