@@ -56,6 +56,7 @@ export const HeaderContent = styled.div`
     color: var(--color-title-in-primary);
     max-width: 30rem;
     margin-top: 2.4rem;
+    margin-bottom: 6.4rem;
   }
 
   @media (min-width: 700px) {
