@@ -8,9 +8,10 @@ import { Header, HeaderContainer, HeaderContent } from './style'
 
 interface PageHeaderProps {
   title: string
+  description?: string
 }
 
-export const PageHeader: React.FC<PageHeaderProps> = ({ children, title }) => {
+export const PageHeader: React.FC<PageHeaderProps> = ({ children, title, description }) => {
 
   return (
     <Header>
@@ -23,6 +24,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ children, title }) => {
 
       <HeaderContent>
         <strong>{ title }</strong>
+        { description && <p>{ description }</p> }
         { children }
       </HeaderContent>
 

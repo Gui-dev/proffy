@@ -50,6 +50,14 @@ export const HeaderContent = styled.div`
     color: var(--color-title-in-primary);
   }
 
+  p {
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    color: var(--color-title-in-primary);
+    max-width: 30rem;
+    margin-top: 2.4rem;
+  }
+
   @media (min-width: 700px) {
     display: flex;
     flex: 1;
