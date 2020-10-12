@@ -67,6 +67,7 @@ export const HeaderContent = styled.div`
     justify-content: center;
     max-width: 74rem;
     margin: 0 auto;
+    margin-bottom: 0;
     padding-bottom: 4.8rem;
 
     strong {
