@@ -49,7 +49,6 @@ export default createGlobalStyle`
   }
 
   .container {
-    width: 90vw;
-    max-width: 70rem;
+    width: 100vw;
   }
 `
