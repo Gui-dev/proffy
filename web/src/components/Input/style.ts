@@ -4,12 +4,12 @@ export const InputBlock = styled.div`
   position: relative;
 
   & + div {
-    margin-top: 1.4rem;
+    margin: 1.4rem 0;
   }
 
   @media (min-width: 700px) {
     & + div {
-      margin-top: 0;
+      margin: 1.4rem 0;
     }
   }
 
