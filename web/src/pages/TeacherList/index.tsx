@@ -27,7 +27,7 @@ export const TeacherList: React.FC = () => {
                 { value: 'Inglês', label: 'Inglês' }
               ]}
             />
-          <Select
+            <Select
               name="week_day"
               label="Dia da semana"
               options={[
