@@ -31,7 +31,11 @@ export const Form = styled.form`
       margin-top: 6.4rem;
     }
 
-    & + textarea {
+    & input + textarea {
+      margin-top: 2.4rem;
+    }
+
+    & select + input {
       margin-top: 2.4rem;
     }
 
@@ -56,6 +60,51 @@ export const Form = styled.form`
     padding-bottom: 1.6rem;
     margin-bottom: 2.4rem;
     border-bottom: 1px solid var(--color-line-in-white);
+  }
+
+  .page-teacher-hour {
+
+    legend {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    & legend button {
+      font-size: 1.6rem;
+      font-weight: 700;
+      font-family: Archivo;
+      color: var(--color-primary);
+      margin-top: 2rem;
+      background: none;
+      border: none;
+      transition: color 0.2s;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--color-primary-dark);
+      }
+    }
+
+    .scheduleItem {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--color-primary);
+    }
+
+    @media (min-width: 700px) {
+
+      legend {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+      }
+
+      & legend button {
+        margin-top: 0;
+      }
+    }
   }
 
   footer {
@@ -115,4 +164,9 @@ export const Form = styled.form`
       }
     }
   }
+
+
 `
+
+
+
