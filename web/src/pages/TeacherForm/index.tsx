@@ -1,4 +1,5 @@
 import React, { FormEvent, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import { PageHeader } from './../../components/PageHeader'
 import { Input } from './../../components/Input'
@@ -10,6 +11,7 @@ import { Container, Main, Form } from './style'
 
 export const TeacherForm: React.FC = () => {
 
+  const history = useHistory()
   const [name, setName] = useState('')
   const [avatar, setAvatar] = useState('')
   const [whatsapp, setWhatsapp] = useState('')
@@ -52,6 +54,7 @@ export const TeacherForm: React.FC = () => {
         schedule: scheduleItems
       })
       alert('Cadastro realizado com sucesso!')
+      history.push('/')
     } catch (error) {
       alert('Erro ao cadastrar')
     }
