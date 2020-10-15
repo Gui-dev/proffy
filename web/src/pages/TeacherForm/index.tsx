@@ -1,14 +1,21 @@
-import React, { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 
 import { PageHeader } from './../../components/PageHeader'
 import { Input } from './../../components/Input'
 import { Textarea } from '../../components/Textarea'
 import { Select } from '../../components/Select'
 import warningIcon from './../../assets/images/icons/warning.svg'
+import { api } from '../../services/api'
 import { Container, Main, Form } from './style'
 
 export const TeacherForm: React.FC = () => {
 
+  const [name, setName] = useState('')
+  const [avatar, setAvatar] = useState('')
+  const [whatsapp, setWhatsapp] = useState('')
+  const [bio, setBio] = useState('')
+  const [subject, setSubject] = useState('')
+  const [cost, setCost] = useState('')
   const [ scheduleItems, setScheduleItems ] = useState([
     { week_day: 0, from: '', to: '' }
   ])
@@ -20,6 +27,37 @@ export const TeacherForm: React.FC = () => {
     ])
   }
 
+  const setScheduleItemValue = (position: number, field: string, value: string) => {
+    const updateScheduleItems = scheduleItems.map((scheduleItem, index) => {
+      if (index === position) {
+        return { ...scheduleItem, [field]: value }
+      }
+
+      return scheduleItem
+    })
+    setScheduleItems(updateScheduleItems)
+  }
+
+  const handleCreateClass = async (event: FormEvent) => {
+    event.preventDefault()
+
+    try {
+      const { data } = await api.post('/classes', {
+        name,
+        avatar,
+        whatsapp,
+        bio,
+        subject,
+        cost: Number(cost),
+        schedule: scheduleItems
+      })
+      alert('Cadastro realizado com sucesso!')
+    } catch (error) {
+      alert('Erro ao cadastrar')
+    }
+
+  }
+
   return (
     <Container className="container">
       <PageHeader
@@ -28,14 +66,34 @@ export const TeacherForm: React.FC = () => {
       />
 
       <Main>
-        <Form>
+        <Form onSubmit={ handleCreateClass }>
 
           <fieldset>
             <legend>Seus dados</legend>
-            <Input name="name" label="Nome completo"/>
-            <Input name="avatar" label="Avatar"/>
-            <Input name="whatsapp" label="Whatsapp"/>
-            <Textarea name="bio" label="Biográfia"/>
+            <Input
+              name="name"
+              label="Nome completo"
+              value={ name }
+              onChange={ e => setName(e.target.value) }
+            />
+            <Input
+              name="avatar"
+              label="Avatar"
+              value={ avatar }
+              onChange={ e => setAvatar(e.target.value) }
+            />
+            <Input
+              name="whatsapp"
+              label="Whatsapp"
+              value={ whatsapp }
+              onChange={ e => setWhatsapp(e.target.value) }
+            />
+            <Textarea
+              name="bio"
+              label="Biográfia"
+              value={ bio }
+              onChange={ e => setBio(e.target.value) }
+            />
           </fieldset>
 
           <fieldset>
@@ -43,6 +101,8 @@ export const TeacherForm: React.FC = () => {
             <Select
               name="subject"
               label="Matéria"
+              value={ subject }
+              onChange={ e => setSubject(e.target.value) }
               options={[
                 { value: 'Artes', label: 'Artes' },
                 { value: 'Biologia', label: 'Biologia' },
@@ -56,7 +116,12 @@ export const TeacherForm: React.FC = () => {
                 { value: 'Inglês', label: 'Inglês' },
               ]}
             />
-            <Input name="cost" label="Custo da sua hora por aula"/>
+            <Input
+              name="cost"
+              label="Custo da sua hora por aula"
+              value={ cost }
+              onChange={ e => setCost(e.target.value) }
+            />
           </fieldset>
 
           <fieldset className="page-teacher-hour">
@@ -69,12 +134,14 @@ export const TeacherForm: React.FC = () => {
               </button>
             </legend>
 
-            { scheduleItems.map(schedule => {
+            { scheduleItems.map((schedule, index) => {
               return (
-                <div key={ schedule.week_day } className="scheduleItem">
+                <div key={ String(index) } className="scheduleItem">
                   <Select
                     name="week_day"
                     label="Dia da semana"
+                    value={ schedule.week_day }
+                    onChange={ e => setScheduleItemValue(index, 'week_day', e.target.value) }
                     options={[
                       { value: '0', label: 'Domingo' },
                       { value: '1', label: 'Segunda' },
@@ -85,8 +152,20 @@ export const TeacherForm: React.FC = () => {
                       { value: '6', label: 'Sábado' }
                     ]}
                   />
-                  <Input type="time" name="from" label="Das" />
-                  <Input type="time" name="to" label="Até" />
+                  <Input
+                    type="time"
+                    name="from"
+                    label="Das"
+                    value={ schedule.from }
+                    onChange={ e => setScheduleItemValue(index, 'from', e.target.value) }
+                  />
+                  <Input
+                    type="time"
+                    name="to"
+                    label="Até"
+                    value={ schedule.to }
+                    onChange={ e => setScheduleItemValue(index, 'to', e.target.value) }
+                  />
                 </div>
               )
             }) }
@@ -99,7 +178,7 @@ export const TeacherForm: React.FC = () => {
               Importante!<br/>
               Preencha todos os dados
             </p>
-            <button>Salvar cadastro</button>
+            <button type="submit">Salvar cadastro</button>
           </footer>
 
         </Form>
