@@ -76,7 +76,7 @@ export const TeacherItemContainer = styled.article`
       }
     }
 
-    > button {
+    > a {
       display: flex;
       align-items: center;
       justify-content: space-evenly;
@@ -84,6 +84,7 @@ export const TeacherItemContainer = styled.article`
       font-weight: 700;
       font-family: Archivo;
       color: var(--color-button-text);
+      text-decoration: none;
       width: 20rem;
       height: 5.6rem;
       background-color: var(--color-secundary);
