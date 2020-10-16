@@ -44,7 +44,7 @@ export const TeacherForm: React.FC = () => {
     event.preventDefault()
 
     try {
-      const { data } = await api.post('/classes', {
+      await api.post('/classes', {
         name,
         avatar,
         whatsapp,
