@@ -16,6 +16,10 @@ export const Landing: React.FC = () => {
     navigate('GiveClasses')
   }
 
+  const handleNavigateToStudyPages = () => {
+    navigate('Study')
+  }
+
   return (
     <Container>
       <Image source={ landingImage }/>
@@ -25,7 +29,7 @@ export const Landing: React.FC = () => {
       </Title>
 
       <ButtonsContainer>
-        <ButtonPrimary>
+        <ButtonPrimary onPress={ handleNavigateToStudyPages }>
           <ImageIcon source={ studyIcon }/>
           <ButtonText>Estudar</ButtonText>
         </ButtonPrimary>
