@@ -4,9 +4,9 @@ import { useNavigation } from '@react-navigation/native'
 import backIcon from './../../assets/images/icons/back.png'
 import logoImage from './../../assets/images/logo.png'
 import { PageHeaderProps } from './PageHeaderProps.interface'
-import { Container, TopBar, ButtonGoBack, ButtonGoBackImage, LogoImage, Title } from './style'
+import { Container, TopBar, ButtonGoBack, ButtonGoBackImage, LogoImage, Title, Header } from './style'
 
-export const PageHeader: React.FC<PageHeaderProps> = ({ children, title }) => {
+export const PageHeader: React.FC<PageHeaderProps> = ({ children, title, headerRight }) => {
 
   const { navigate } = useNavigation()
 
@@ -24,7 +24,10 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ children, title }) => {
         <LogoImage  source={ logoImage } resizeMode="contain"/>
       </TopBar>
 
-      <Title>{ title }</Title>
+      <Header>
+        <Title>{ title }</Title>
+        { headerRight }
+      </Header>
 
       { children }
     </Container>
