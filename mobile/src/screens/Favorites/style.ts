@@ -10,5 +10,5 @@ export const FavoritesListItems = styled.ScrollView.attrs({
     paddingBottom: 16
   }
 })`
-  margin-top: -60px;
+  margin-top: -40px;
 `
