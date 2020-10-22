@@ -6,7 +6,7 @@ import logoImage from './../../assets/images/logo.png'
 import { PageHeaderProps } from './PageHeaderProps.interface'
 import { Container, TopBar, ButtonGoBack, ButtonGoBackImage, LogoImage, Title } from './style'
 
-export const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
+export const PageHeader: React.FC<PageHeaderProps> = ({ children, title }) => {
 
   const { navigate } = useNavigation()
 
@@ -25,6 +25,8 @@ export const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
       </TopBar>
 
       <Title>{ title }</Title>
+
+      { children }
     </Container>
   )
 }
