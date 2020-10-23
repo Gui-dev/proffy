@@ -3,35 +3,32 @@ import React from 'react'
 import heartOutlineIcon from './../../assets/images/icons/heart-outline.png'
 import unfavoriteIcon from './../../assets/images/icons/unfavorite.png'
 import whatsappIcon from './../../assets/images/icons/whatsapp.png'
+import { TeacherItemProps } from './TeacherItem.interface'
 import { Container, Profile, Avatar, ProfileInfo, Name, Subject, Bio,
   Footer, Price, PriceValue, ButtonsContainer, FavoriteButton, ButtonIcon, ContactButton, ButtonText
 } from './style'
 
-export const TeacherItem: React.FC = () => {
+export const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
   return (
     <Container>
       <Profile>
         <Avatar
-          source={{ uri: 'https://avatars3.githubusercontent.com/u/23706132?s=460&u=7aade1989795cf949f8f554e88e9093c242eb563&v=4' }}
+          source={{ uri: teacher.avatar }}
         />
         <ProfileInfo>
-          <Name>Gui Silva</Name>
-          <Subject>História</Subject>
+          <Name>{ teacher.name }</Name>
+          <Subject>{ teacher.subject }</Subject>
         </ProfileInfo>
       </Profile>
 
       <Bio>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        { '\n' }{ '\n' }
-        Dolore minus adipisci fuga veniam, dolores, possimus fugiat quas
-        libero eaque necessitatibus architecto blanditiis, quos placeat
-        dicta eos harum consequuntur voluptate reprehenderit!
+        { teacher.bio }
       </Bio>
 
       <Footer>
         <Price>
           Preço/hora { '   ' }
-          <PriceValue>R$ 20,00</PriceValue>
+          <PriceValue>R$ { teacher.cost }</PriceValue>
         </Price>
 
         <ButtonsContainer>
