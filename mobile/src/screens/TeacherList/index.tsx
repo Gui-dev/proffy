@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Feather } from '@expo/vector-icons'
+import AsyncStorage from '@react-native-community/async-storage'
 
 import { PageHeader } from './../../components/PageHeader'
 import { TeacherItem } from '../../components/TeacherItem'
@@ -12,10 +13,21 @@ import { Container, TeacherListItems, SearchForm, Label, Input, InputGroup, Inpu
 export const TeacherList: React.FC = () => {
 
   const [teachers, setTeachers] = useState([])
+  const [favorites, setFavorites] = useState<number[]>([])
   const [isFiltersVisible, setIsFiltersVisible] = useState(false)
   const [subject, setSubject] = useState('')
   const [week_day, setWeekDay] = useState('')
   const [time, setTime] = useState('')
+
+  const loadFavorites = async () => {
+    const response = await AsyncStorage.getItem('favorites')
+
+    if (response) {
+      const favoritedTeachers = JSON.parse(response)
+      const favoritedTeachersIds = favoritedTeachers.map((teacher : TeacherProps) => teacher.id)
+      setFavorites(favoritedTeachersIds)
+    }
+  }
 
   const handleToggleFiltersVisible = () => {
     setIsFiltersVisible(!isFiltersVisible)
@@ -23,6 +35,7 @@ export const TeacherList: React.FC = () => {
 
   const handleFilterSubmit = async () => {
 
+    loadFavorites()
     const { data } = await api.get('/classes', {
       params: {
         subject,
@@ -85,7 +98,11 @@ export const TeacherList: React.FC = () => {
       <TeacherListItems>
 
         { teachers.map((teacher: TeacherProps) => (
-            <TeacherItem key={ teacher.id } teacher={ teacher }/>
+            <TeacherItem
+              key={ teacher.id }
+              teacher={ teacher }
+              favorited={favorites.includes(teacher.id)}
+            />
           ))
         }
       </TeacherListItems>
