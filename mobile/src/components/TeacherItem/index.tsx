@@ -1,4 +1,5 @@
 import React from 'react'
+import { Linking } from 'react-native'
 
 import heartOutlineIcon from './../../assets/images/icons/heart-outline.png'
 import unfavoriteIcon from './../../assets/images/icons/unfavorite.png'
@@ -9,6 +10,11 @@ import { Container, Profile, Avatar, ProfileInfo, Name, Subject, Bio,
 } from './style'
 
 export const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
+
+  const handleLinkToWhatsapp = () => {
+    Linking.openURL(`whatsapp://send?phone=${teacher.whatsapp}`)
+  }
+
   return (
     <Container>
       <Profile>
@@ -38,7 +44,7 @@ export const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
             <ButtonIcon source={ unfavoriteIcon }/>
           </FavoriteButton>
 
-          <ContactButton>
+          <ContactButton onPress={ handleLinkToWhatsapp }>
             <ButtonIcon source={ whatsappIcon }/>
             <ButtonText>Entrar em contato</ButtonText>
           </ContactButton>
