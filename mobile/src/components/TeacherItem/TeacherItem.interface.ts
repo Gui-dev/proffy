@@ -10,4 +10,5 @@ export interface TeacherProps {
 
 export interface TeacherItemProps {
   teacher: TeacherProps
+  favorited: boolean
 }
